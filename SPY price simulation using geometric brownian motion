@@ -6,7 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #Values that refer to SPY
-steps = 11300
+steps = 7774
 mean = 0.00039
 sigma = 0.011781685946737498
 S0 = 43.97 # Initial price
