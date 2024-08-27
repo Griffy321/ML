@@ -1,0 +1,27 @@
+# Following values were found by gathering daily open and close data since 1993 from yahoo finace then sorting it to show a 
+# distrobution of the returns in order to find a mean and a standard deviation. Mean return = 0.00039, std = 0.011781685946737498
+# The code can be found in Stocks -> SPY_price_sim
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+#Values that refer to SPY
+steps = 11300
+mean = 0.00039
+sigma = 0.011781685946737498
+S0 = 43.97 # Initial price
+dt = 1 # Time step (daily)
+
+increments = np.random.normal(0, 1, steps)
+price = np.zeros(steps)
+price[0] = S0
+
+for i in range(1, steps):
+    price[i] = price[i - 1] * np.exp((mean - 0.5 * sigma**2) * dt + sigma * np.sqrt(dt) * increments[i])
+
+plt.figure(figsize=(12,6))
+plt.plot(price, lw = 0.5)
+plt.title('Geometric Brownian Motion Simulation')
+plt.xlabel('Step')
+plt.ylabel('Price')
+plt.show()
